@@ -1,0 +1,33 @@
+<div class="alert alert-light" id="aldiv" role="alert">
+  <p id="altext"></p>
+</div>
+<div class="container">
+  <form action={{action}} method={{method}} id="student-form">
+    <label for="fname">First Name:</label>
+    <input id="fname" type="text" name="firstName" value="{{student.firstName}}" placeholder="Enter first name"
+      required />
+    <br />
+    <label for="lname">Last Name:</label>
+    <input id="lname" type="text" name="lastName" value="{{student.lastName}}" placeholder="Enter last name" required />
+    <br />
+    <label for="age">Age:</label>
+    <input type="text" id="age" name="age" value="{{student.age}}" placeholder="Enter your age" required />
+    <br />
+    <label>Gender: </label>
+    <input id="male" type="radio" name="gender" value="male" required {{{setChecked student.gender "male"}}} />
+    <label for="male">Male</label>
+    <input id="female" type="radio" name="gender" value="female" required {{{setChecked student.gender "female"}}} />
+    <label for="female">Female</label>
+    <br />
+    <label> Class Teacher : </label>
+    <select id="teacherId" name="teacherId" required>
+      {{#each teacher}}
+      <option value="{{id}}" {{{setSelected id @root.student.teacherId}}}> {{firstName}}{{" "}} {{lastName}}
+      </option>
+      {{/each}}
+    </select>
+    <br />
+    <input type="submit" value="{{#if (ifEquality mode "Add")}}Add {{else}}Edit {{/if}} Student"
+      class="btn btn-primary" />
+  </form>
+</div>

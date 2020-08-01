@@ -1,0 +1,28 @@
+{
+  "name": "student-mangement-login-form",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "bcrypt": "5.0.0",
+    "body-parser": "1.19.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "4.17.1",
+    "express-handlebars": "4.0.4",
+    "handlebars": "4.7.6",
+    "helmet": "^3.23.3",
+    "jsonwebtoken": "8.5.1",
+    "pg": "8.2.1",
+    "pg-hstore": "2.3.3",
+    "sequelize": "5.21.12"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "keywords": []
+}

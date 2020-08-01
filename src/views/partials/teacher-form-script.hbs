@@ -1,0 +1,45 @@
+<script>
+  const $teacherForm = document.querySelector("#teacher-form");
+  const $alert = document.querySelector("#aldiv");
+  $teacherForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const teacherDetails = {};
+    const teacherForm = new FormData($teacherForm);
+    for (let formFields of teacherForm) {
+      const [key, value] = formFields;
+      teacherDetails[key] = value;
+    }
+    const requestConfig = {
+      method: "{{ method }}",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(teacherDetails)
+    };
+    fetch("{{action}}", requestConfig)
+      .then(response => {
+        if (response.status !== 200)
+          throw Error("Request Failed");
+        return response.json();
+      })
+      .then(data => {
+        const initial_alert = document.querySelector("#altext");
+        initial_alert.remove();
+        const new_alert = document.createElement("P");
+        new_alert.id = "altext";
+        new_alert.appendChild(document.createTextNode("Successful !!"));
+        $alert.appendChild(new_alert);
+        $alert.style.color = "green";
+      })
+      .catch(error => {
+        const initial_alert = document.querySelector("#altext");
+        initial_alert.remove();
+        const new_alert = document.createElement("P");
+        new_alert.id = "altext";
+        new_alert.appendChild(document.createTextNode("Invalid age"));
+        $alert.appendChild(new_alert);
+        $alert.style.color = "red";
+      })
+  });
+</script>

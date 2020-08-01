@@ -1,0 +1,31 @@
+<div class="alert alert-light" id="aldiv" role="alert">
+  <p id="altext"></p>
+</div>
+<div class="container">
+  <form action={{action}} method={{method}} id="teacher-form">
+    <label for="fname">First Name:</label>
+    <input id="fname" type="text" name="firstName" value="{{teacher.firstName}}" placeholder="Enter first name...."
+      required />
+    <br />
+    <label for="lname">Last Name:</label>
+    <input id="lname" type="text" name="lastName" value="{{teacher.lastName}}" placeholder="Enter last name..."
+      required />
+    <br />
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" value="{{teacher.email}}" placeholder="Enter email..." required />
+    <br />
+    <label>Class: </label>
+    <input type="text" id="class" name="class"
+      value="{{#if (ifEquality teacher.class null)}} {{else}}{{teacher.class}}{{/if}}" placeholder="Enter class..." />
+    <br />
+    <label>Subject: </label>
+    <select name="subject">
+      <option value="english" {{{setSelected teacher.subject "english"}}}>English</option>
+      <option value="maths" {{{setSelected teacher.subject "maths"}}}>Mathematics</option>
+      <option value="physics" {{{setSelected teacher.subject "physics"}}}>Physics</option>
+    </select>
+    <br />
+    <input type="submit" value="{{#if (ifEquality mode "Add")}}Add {{else}}Edit {{/if}} Teacher"
+      class="btn btn-primary" />
+  </form>
+</div>
