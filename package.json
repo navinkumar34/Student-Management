@@ -4,7 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/index.js",
+    "devstart": "nodemon src/index.js",
+    "serverstart": "DEBUG=local-library:* npm run devstart"
   },
     "engines": {
     "node": "12.16.3"
